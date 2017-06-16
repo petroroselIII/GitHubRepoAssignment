@@ -1,0 +1,419 @@
+Last login: Thu Jun 15 19:45:22 on console
+Petronilos-MBP:~ petro$ git
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+Petronilos-MBP:~ petro$ ls
+Applications	Documents	Library		Music		Public
+Desktop		Downloads	Movies		Pictures
+Petronilos-MBP:~ petro$ git config --global user.name Petro
+Petronilos-MBP:~ petro$ git config --global user.email petro.rosel@gmail.com
+Petronilos-MBP:~ petro$ git config --global --list
+core.excludesfile=/Users/petro/.gitignore_global
+difftool.sourcetree.cmd=opendiff "$LOCAL" "$REMOTE"
+difftool.sourcetree.path=
+mergetool.sourcetree.cmd=/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"
+mergetool.sourcetree.trustexitcode=true
+user.name=Petro
+user.email=petro.rosel@gmail.com
+Petronilos-MBP:~ petro$ git config --global color.ui "auto"
+Petronilos-MBP:~ petro$ ls
+Applications	Downloads	Music
+Desktop		Library		Pictures
+Documents	Movies		Public
+Petronilos-MBP:~ petro$ cd desktop
+Petronilos-MBP:desktop petro$ ls
+DojoAssignments
+Petronilos-MBP:desktop petro$ cd dojoassignments
+Petronilos-MBP:dojoassignments petro$ ls
+MEAN		Ruby		iOS
+Python		WebFundamentals	netCore
+Petronilos-MBP:dojoassignments petro$ mkdir new_project
+Petronilos-MBP:dojoassignments petro$ cd new_project
+Petronilos-MBP:new_project petro$ git init
+Initialized empty Git repository in /Users/petro/Desktop/DojoAssignments/new_project/.git/
+Petronilos-MBP:new_project petro$ touch aboutMe.txt
+Petronilos-MBP:new_project petro$ ls
+aboutMe.txt
+Petronilos-MBP:new_project petro$ cd aboutMe.txt
+-bash: cd: aboutMe.txt: Not a directory
+Petronilos-MBP:new_project petro$ open -a aboutMe.txt
+Unable to find application named 'aboutMe.txt'
+Petronilos-MBP:new_project petro$ open -a TextEdit aboutMe.txt
+Petronilos-MBP:new_project petro$ git status
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	aboutMe.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+Petronilos-MBP:new_project petro$ git add aboutMe.txt
+Petronilos-MBP:new_project petro$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   aboutMe.txt
+
+Petronilos-MBP:new_project petro$ git commit -m "aboutMe.txt added"
+[master (root-commit) 27b8904] aboutMe.txt added
+ 1 file changed, 3 insertions(+)
+ create mode 100644 aboutMe.txt
+Petronilos-MBP:new_project petro$ git status
+On branch master
+nothing to commit, working tree clean
+Petronilos-MBP:new_project petro$ git log
+commit 27b890499f8d4e49fcb1f1c74414f5fe942ae182 (HEAD -> master)
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 20:32:33 2017 -0700
+
+    aboutMe.txt added
+Petronilos-MBP:new_project petro$ ls
+aboutMe.txt
+Petronilos-MBP:new_project petro$ open -a TextEdit aboutMe.txt
+Petronilos-MBP:new_project petro$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   aboutMe.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Petronilos-MBP:new_project petro$ git add aboutMe.txt
+Petronilos-MBP:new_project petro$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Petronilos-MBP:new_project petro$ git commit -m "added favorite quote"
+[master d41444e] added favorite quote
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+Petronilos-MBP:new_project petro$ git log
+commit d41444e220f807e046f2d8e74271b02672d5861c (HEAD -> master)
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 20:38:37 2017 -0700
+
+    added favorite quote
+
+commit 27b890499f8d4e49fcb1f1c74414f5fe942ae182
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 20:32:33 2017 -0700
+
+    aboutMe.txt added
+Petronilos-MBP:new_project petro$ git diff --stat 27b890499f8d4e49fcb1f1c74414f5fe942ae182
+ aboutMe.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+Petronilos-MBP:new_project petro$ git remote add origin https://github.com/petroroselIII/assignment1_demo.git
+Petronilos-MBP:new_project petro$ git push -u origin master
+Username for 'https://github.com': petroroselIII
+Password for 'https://petroroselIII@github.com': 
+Counting objects: 6, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 571 bytes | 0 bytes/s, done.
+Total 6 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/petroroselIII/assignment1_demo.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from origin.
+Petronilos-MBP:new_project petro$ ls
+aboutMe.txt
+Petronilos-MBP:new_project petro$ cd ..
+Petronilos-MBP:dojoassignments petro$ cd ~
+Petronilos-MBP:~ petro$ ls
+Applications	Downloads	Music
+Desktop		Library		Pictures
+Documents	Movies		Public
+Petronilos-MBP:~ petro$ cd desktop
+Petronilos-MBP:desktop petro$ ls
+DojoAssignments
+Petronilos-MBP:desktop petro$ mkdir gittest
+Petronilos-MBP:desktop petro$ ls
+DojoAssignments	gittest
+Petronilos-MBP:desktop petro$ cd gittest
+Petronilos-MBP:gittest petro$ git init
+Initialized empty Git repository in /Users/petro/Desktop/gittest/.git/
+Petronilos-MBP:gittest petro$ touch index.html
+Petronilos-MBP:gittest petro$ touch styles.css
+Petronilos-MBP:gittest petro$ touch aboutMe.txt
+Petronilos-MBP:gittest petro$ add .
+-bash: add: command not found
+Petronilos-MBP:gittest petro$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+Did you mean this?
+	add
+Petronilos-MBP:gittest petro$ git add .
+Petronilos-MBP:gittest petro$ git status
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   aboutMe.txt
+	new file:   index.html
+	new file:   styles.css
+
+Petronilos-MBP:gittest petro$ git commit -m "initial commit"
+[master (root-commit) 68588e3] initial commit
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 aboutMe.txt
+ create mode 100644 index.html
+ create mode 100644 styles.css
+Petronilos-MBP:gittest petro$ open -a TextEdit aboutMe.txt
+Petronilos-MBP:gittest petro$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   aboutMe.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Petronilos-MBP:gittest petro$ 
+Petronilos-MBP:gittest petro$ git add .
+Petronilos-MBP:gittest petro$ status
+-bash: status: command not found
+Petronilos-MBP:gittest petro$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Petronilos-MBP:gittest petro$ git commit -m "updated about me"
+[master 8b67f71] updated about me
+ 1 file changed, 1 insertion(+)
+Petronilos-MBP:gittest petro$ open -a TextEdit aboutMe.txt
+Petronilos-MBP:gittest petro$ git add aboutMe.txt
+Petronilos-MBP:gittest petro$ status
+-bash: status: command not found
+Petronilos-MBP:gittest petro$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Petronilos-MBP:gittest petro$ git commit -m "added favorite movie(s)"
+[master ea4de97] added favorite movie(s)
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Petronilos-MBP:gittest petro$ git log
+commit ea4de97ec8b7ead69680953481b866e70594afc9 (HEAD -> master)
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:17:14 2017 -0700
+
+    added favorite movie(s)
+
+commit 8b67f71a716a15dd4f2eca6c432d1201f2397d42
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:14:51 2017 -0700
+
+    updated about me
+
+commit 68588e3ec6d88cc437de0ba82aaac5070265dbc3
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:12:14 2017 -0700
+
+    initial commit
+Petronilos-MBP:gittest petro$ git revert git revert 68588e3
+fatal: bad revision 'git'
+Petronilos-MBP:gittest petro$ git revert 68588e3
+error: could not revert 68588e3... initial commit
+hint: after resolving the conflicts, mark the corrected paths
+hint: with 'git add <paths>' or 'git rm <paths>'
+hint: and commit the result with 'git commit'
+Petronilos-MBP:gittest petro$ ls
+aboutMe.txt
+Petronilos-MBP:gittest petro$ git status
+On branch master
+You are currently reverting commit 68588e3.
+  (fix conflicts and run "git revert --continue")
+  (use "git revert --abort" to cancel the revert operation)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    index.html
+	deleted:    styles.css
+
+Unmerged paths:
+  (use "git reset HEAD <file>..." to unstage)
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+
+	deleted by them: aboutMe.txt
+
+Petronilos-MBP:gittest petro$ open -a TextEdit aboutMe.txt
+Petronilos-MBP:gittest petro$ git status
+On branch master
+You are currently reverting commit 68588e3.
+  (fix conflicts and run "git revert --continue")
+  (use "git revert --abort" to cancel the revert operation)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    index.html
+	deleted:    styles.css
+
+Unmerged paths:
+  (use "git reset HEAD <file>..." to unstage)
+  (use "git add/rm <file>..." as appropriate to mark resolution)
+
+	deleted by them: aboutMe.txt
+
+Petronilos-MBP:gittest petro$ git add .
+Petronilos-MBP:gittest petro$ git status
+On branch master
+You are currently reverting commit 68588e3.
+  (all conflicts fixed: run "git revert --continue")
+  (use "git revert --abort" to cancel the revert operation)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+	deleted:    index.html
+	deleted:    styles.css
+
+Petronilos-MBP:gittest petro$ touch index.html
+Petronilos-MBP:gittest petro$ touch styles.css
+Petronilos-MBP:gittest petro$ ls
+aboutMe.txt	index.html	styles.css
+Petronilos-MBP:gittest petro$ git status
+On branch master
+You are currently reverting commit 68588e3.
+  (all conflicts fixed: run "git revert --continue")
+  (use "git revert --abort" to cancel the revert operation)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+	deleted:    index.html
+	deleted:    styles.css
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	index.html
+	styles.css
+
+Petronilos-MBP:gittest petro$ git add .
+Petronilos-MBP:gittest petro$ git status
+On branch master
+You are currently reverting commit 68588e3.
+  (all conflicts fixed: run "git revert --continue")
+  (use "git revert --abort" to cancel the revert operation)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   aboutMe.txt
+
+Petronilos-MBP:gittest petro$ git add .
+Petronilos-MBP:gittest petro$ ls
+aboutMe.txt	index.html	styles.css
+Petronilos-MBP:gittest petro$ git commit -m "changed favorite movie(s) to book(s)"
+[master a73339c] changed favorite movie(s) to book(s)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Petronilos-MBP:gittest petro$ git log
+commit a73339cbf4d88042dcc4b872763973b342848e34 (HEAD -> master)
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:23:59 2017 -0700
+
+    changed favorite movie(s) to book(s)
+
+commit ea4de97ec8b7ead69680953481b866e70594afc9
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:17:14 2017 -0700
+
+    added favorite movie(s)
+
+commit 8b67f71a716a15dd4f2eca6c432d1201f2397d42
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:14:51 2017 -0700
+
+    updated about me
+
+commit 68588e3ec6d88cc437de0ba82aaac5070265dbc3
+Author: Petro <petro.rosel@gmail.com>
+Date:   Thu Jun 15 21:12:14 2017 -0700
+
+    initial commit
+Petronilos-MBP:gittest petro$ ls
+aboutMe.txt	index.html	styles.css
+Petronilos-MBP:gittest petro$ cd ~
+Petronilos-MBP:~ petro$ ls
+Applications	Downloads	Music
+Desktop		Library		Pictures
+Documents	Movies		Public
+Petronilos-MBP:~ petro$ cd desktop
+Petronilos-MBP:desktop petro$ ls
+DojoAssignments	gittest
+Petronilos-MBP:desktop petro$ cd dojoassignment
+-bash: cd: dojoassignment: No such file or directory
+Petronilos-MBP:desktop petro$ cd dojoassignments
+Petronilos-MBP:dojoassignments petro$ ls
+MEAN		Ruby		iOS		new_project
+Python		WebFundamentals	netCore
+Petronilos-MBP:dojoassignments petro$ mkdir GitHubRepoAssignment
+Petronilos-MBP:dojoassignments petro$ cd githubrepoassignment
+Petronilos-MBP:githubrepoassignment petro$ git init
+Initialized empty Git repository in /Users/petro/Desktop/DojoAssignments/GitHubRepoAssignment/.git/
+Petronilos-MBP:githubrepoassignment petro$ touch readme.md
+Petronilos-MBP:githubrepoassignment petro$ ls
+readme.md
+Petronilos-MBP:githubrepoassignment petro$ open -a TextEdit readme.md
+Petronilos-MBP:githubrepoassignment petro$ 
